@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structure Visualizer - Learn Through Interactive Animations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">📊</div>
+                    <h1 class="logo-text">Data Structure Visualizer</h1>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#learn" class="nav-link">Learn</a>
+                    <a href="#practice" class="nav-link">Practice</a>
+                    <a href="#about" class="nav-link">About</a>
+                </nav>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">Master Data Structures Through <span class="highlight">Interactive Visualization</span></h2>
+                    <p class="hero-description">
+                        Transform complex computer science concepts into engaging visual experiences. 
+                        Watch algorithms come to life with step-by-step animations designed for students.
+                    </p>
+                    <button class="btn btn--primary btn--lg start-learning-btn">
+                        🚀 Start Learning Now
+                    </button>
+                </div>
+                <div class="hero-visual">
+                    <div class="animated-elements">
+                        <div class="floating-element element-1">Array</div>
+                        <div class="floating-element element-2">Stack</div>
+                        <div class="floating-element element-3">Queue</div>
+                        <div class="floating-element element-4">Tree</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Structures Grid Section -->
+        <section id="learn" class="data-structures-section">
+            <div class="container">
+                <h2 class="section-title">Choose Your Data Structure</h2>
+                <p class="section-subtitle">Select a data structure below to start visualizing its operations</p>
+                <div class="ds-grid" id="dataStructuresGrid">
+                    <!-- Data structure cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualization Interface -->
+        <section id="visualization" class="visualization-section hidden">
+            <div class="container">
+                <div class="visualization-layout">
+                    <!-- Control Panel -->
+                    <div class="control-panel">
+                        <div class="control-group">
+                            <label class="form-label">Data Structure</label>
+                            <select id="dsSelector" class="form-control">
+                                <option value="">Select Data Structure</option>
+                            </select>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="form-label">Operation</label>
+                            <select id="operationSelector" class="form-control" disabled>
+                                <option value="">Select Operation</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="form-label">Input Value</label>
+                            <div class="input-with-btn">
+                                <input type="text" id="inputValue" class="form-control" placeholder="Enter value...">
+                                <button id="addValueBtn" class="btn btn--secondary btn--sm">Add</button>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="form-label">Animation Speed</label>
+                            <div class="speed-control">
+                                <input type="range" id="speedSlider" min="1" max="3" value="2" class="speed-slider">
+                                <div class="speed-labels">
+                                    <span>Slow</span>
+                                    <span>Medium</span>
+                                    <span>Fast</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="animation-controls">
+                            <button id="playBtn" class="btn btn--primary btn--sm">▶️ Play</button>
+                            <button id="pauseBtn" class="btn btn--secondary btn--sm" disabled>⏸️ Pause</button>
+                            <button id="stepBtn" class="btn btn--outline btn--sm">⏭️ Step</button>
+                            <button id="resetBtn" class="btn btn--outline btn--sm">🔄 Reset</button>
+                        </div>
+
+                        <button id="exampleDataBtn" class="btn btn--secondary btn--full-width">
+                            📋 Use Example Data
+                        </button>
+                    </div>
+
+                    <!-- Visualization Area -->
+                    <div class="visualization-area">
+                        <div class="visualization-header">
+                            <h3 id="currentDS">Select a Data Structure</h3>
+                            <div class="complexity-info">
+                                <span class="complexity-label">Time:</span>
+                                <span id="timeComplexity">-</span>
+                                <span class="complexity-label">Space:</span>
+                                <span id="spaceComplexity">-</span>
+                            </div>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="visualizationCanvas" width="800" height="400"></canvas>
+                        </div>
+                        <div class="step-info">
+                            <div class="current-step">
+                                <strong>Step <span id="currentStep">0</span> of <span id="totalSteps">0</span></strong>
+                            </div>
+                            <div class="step-description" id="stepDescription">
+                                Select a data structure and operation to begin
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Information Panel -->
+                    <div class="info-panel">
+                        <div class="info-section">
+                            <h4>About This Structure</h4>
+                            <p id="dsDescription">Select a data structure to see its description and properties.</p>
+                        </div>
+                        
+                        <div class="info-section">
+                            <h4>Current Operation</h4>
+                            <p id="operationDescription">Choose an operation to see how it works.</p>
+                        </div>
+
+                        <div class="info-section tips-section">
+                            <h4>💡 Did You Know?</h4>
+                            <p id="tipContent">Data structures are the foundation of efficient algorithms!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Data Structure Visualizer. Built for students, by educators.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
